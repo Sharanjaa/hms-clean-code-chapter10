@@ -1,9 +1,10 @@
 package com.company;
 
-import com.company.account.Account;
-import com.company.util.EmailNotificationService;
-import com.company.util.NotificationService;
-import com.company.util.SMSNotificationService;
+import com.company.v1.account.Account;
+import com.company.v1.account.Transaction;
+import com.company.v1.util.EmailNotificationService;
+import com.company.v1.util.NotificationService;
+import com.company.v1.util.SMSNotificationService;
 
 public class Main {
 
@@ -12,10 +13,13 @@ public class Main {
         NotificationService emailNotificationService = new EmailNotificationService();
         NotificationService smsNotificationService = new SMSNotificationService();
 
-        Account account1 = new Account("100", "John", smsNotificationService);
-        account1.addTransactions(50000);
-        account1.addTransactions(10000);
-        account1.addTransactions(-2000);
-        System.out.println(account1.getCurrentBalance());
+        Account account = new Account("100", "John", smsNotificationService);
+        Transaction firstTransaction = new Transaction(1, 50000);
+        Transaction secondTransaction = new Transaction(2, 10000);
+        Transaction thirdTransaction = new Transaction(3, -2000);
+        account.addTransactions(firstTransaction);
+        account.addTransactions(secondTransaction);
+        account.addTransactions(thirdTransaction);
+        System.out.println(account.getCurrentBalance());
     }
 }

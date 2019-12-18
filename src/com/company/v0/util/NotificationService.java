@@ -1,4 +1,4 @@
-package com.company.util;
+package com.company.v0.util;
 
 public interface NotificationService {
 

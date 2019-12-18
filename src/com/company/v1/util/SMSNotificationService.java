@@ -1,4 +1,4 @@
-package com.company.util;
+package com.company.v1.util;
 
 public class SMSNotificationService implements NotificationService {
 

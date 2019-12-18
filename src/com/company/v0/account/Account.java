@@ -1,13 +1,12 @@
-package com.company.account;
+package com.company.v0.account;
 
-import com.company.util.EmailNotificationService;
-import com.company.util.NotificationService;
+import com.company.v0.util.EmailNotificationService;
+import com.company.v0.util.NotificationService;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-/**
-account class
-*/
+
 public class Account {
 
     private String accountId;
@@ -55,7 +54,7 @@ public class Account {
         }
     }
     // good encapsulation
-    // TODO: 12/18/19 make it as transaction object 
+    // TODO: 12/18/19 make it as transaction object
     public void addTransactions(int transaction) {
         this.transactions.add(transaction);
         this.notifyTrasaction(transaction);
