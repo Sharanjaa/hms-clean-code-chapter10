@@ -5,7 +5,9 @@ import com.company.util.NotificationService;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
+/**
+account class
+*/
 public class Account {
 
     private String accountId;
