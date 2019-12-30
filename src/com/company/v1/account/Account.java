@@ -1,25 +1,16 @@
 package com.company.v1.account;
 
-import com.company.v1.util.EmailNotificationService;
-import com.company.v1.util.NotificationService;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Account {
 
     private String accountId;
-    private String customerId;
+    private String customerName;
     private List<Transaction> transactions;
-    private NotificationService notificationService;
+    private double interestRate;
+    private String branch;
+    private String accountType;
 
-    public Account(String accountId, String customerId, NotificationService notificationService) {
-        this.accountId = accountId;
-        this.customerId = customerId;
-        this.notificationService = notificationService;
-        this.transactions = new ArrayList<>();
-        validateAccountId(accountId);
-    }
 
     public String getAccountId() {
         return accountId;
@@ -29,40 +20,43 @@ public class Account {
         this.accountId = accountId;
     }
 
-    public String getCustomerId() {
-        return customerId;
+    public String getCustomerName() {
+        return customerName;
     }
 
-    public void setCustomerId(String customerId) {
-        this.customerId = customerId;
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
     }
 
     public List<Transaction> getTransactions() {
-        return  Collections.unmodifiableList(this.transactions);
+        return transactions;
     }
 
-    private void validateAccountId(String accountId) {
-        if (!(accountId != null && accountId.length() == 13)) {
-            throw new RuntimeException("Account Id is null or in wrong format");
-        }
+    public void setTransactions(List<Transaction> transactions) {
+        this.transactions = transactions;
     }
 
-    public void addTransactions(Transaction transaction) {
-        this.transactions.add(transaction);
-        this.notifyTransaction(transaction);
+    public double getInterestRate() {
+        return interestRate;
     }
 
-    public int getCurrentBalance() {
-        return transactions.stream().mapToInt(Transaction::getTransactionAmount).sum();
+    public void setInterestRate(double interestRate) {
+        this.interestRate = interestRate;
     }
 
-    public void notifyTrasactionViaEmail(int transaction) {
-        EmailNotificationService emailService = new EmailNotificationService();
-        emailService.notify(this.customerId, "You have a transaction of: " + transaction);
+    public String getBranch() {
+        return branch;
     }
 
-    public void notifyTransaction(Transaction transaction) {
-        notificationService.notify(this.customerId, "You have a transaction of: " + transaction);
+    public void setBranch(String branch) {
+        this.branch = branch;
     }
 
+    public String getAccountType() {
+        return accountType;
+    }
+
+    public void setAccountType(String accountType) {
+        this.accountType = accountType;
+    }
 }
