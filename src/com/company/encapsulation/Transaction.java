@@ -1,4 +1,4 @@
-package com.company.v1.account;
+package com.company.encapsulation;
 
 public class Transaction {
 

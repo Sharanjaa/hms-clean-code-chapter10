@@ -1,7 +1,7 @@
 package com.company;
 
-import com.company.v1.account.Account;
-import com.company.v1.account.Transaction;
+import com.company.encapsulation.Account;
+import com.company.encapsulation.Transaction;
 import com.company.v1.util.EmailNotificationService;
 import com.company.v1.util.NotificationService;
 import com.company.v1.util.SMSNotificationService;
