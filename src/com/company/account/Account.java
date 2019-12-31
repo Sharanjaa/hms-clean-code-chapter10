@@ -47,11 +47,11 @@ public class Account {
     }
 
     private void validateAccountId(AccountType type, String accountId) {
-        if (type == AccountType.Retail) {
+        if (type == AccountType.RETAIL) {
             if(!(accountId != null && Pattern.matches("/^[a-zA-Z]{12}$/", accountId))) {
                 throw new RuntimeException("Retial Account Id is null or in wrong format");
             }
-        } else if(type == AccountType.Corporate) {
+        } else if(type == AccountType.CORPORATE) {
             if(!(accountId != null && Pattern.matches("/^[a-zA-Z]{10}$/", accountId))) {
                 throw new RuntimeException("Corperate Account Id is null or in wrong format");
             }
