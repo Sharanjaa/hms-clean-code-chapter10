@@ -11,9 +11,9 @@ public class AccountValidator extends BaseValidator {
         checkForNull(accountId, "Account Id can not be null");
 
         if (type == AccountType.Retail) {
-            checkForPattern("/^[a-zA-Z]{12}$/", accountId, "Retail Account Id is null or in wrong format");
+            checkForPattern("/^[a-zA-Z]{12}$/", accountId, "RETAIL Account Id is null or in wrong format");
         } else if(type == AccountType.Corporate) {
-            checkForPattern("/^[a-zA-Z]{10}$/", accountId, "Corporate Account Id is null or in wrong format");
+            checkForPattern("/^[a-zA-Z]{10}$/", accountId, "CORPORATE Account Id is null or in wrong format");
         }
     }
 
