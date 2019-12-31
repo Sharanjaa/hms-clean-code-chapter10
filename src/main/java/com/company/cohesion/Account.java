@@ -1,4 +1,4 @@
-package com.company.high.cohesion;
+package com.company.cohesion;
 
 import com.company.account.AccountType;
 import com.company.validator.AccountValidator;
