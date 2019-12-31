@@ -1,7 +1,5 @@
 package com.company.account;
 
-import com.company.util.EmailNotificationService;
-import com.company.util.NotificationService;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -16,7 +14,6 @@ public class Account {
     private AccountType type;
     private String customerId;
     private List<Integer> transactions;
-    private NotificationService notificationService;
 
     public Account(String accountId, String customerId, AccountType type) {
         validateAccountId(type, accountId);

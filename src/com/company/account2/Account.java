@@ -1,14 +1,10 @@
 package com.company.account2;
 
 import com.company.account.AccountType;
-import com.company.util.EmailNotificationService;
-import com.company.util.NotificationService;
 import com.company.validator.AccountValidator;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.regex.Pattern;
 
 public class Account {
 
