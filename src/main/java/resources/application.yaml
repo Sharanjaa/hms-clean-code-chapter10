@@ -1,0 +1,124 @@
+# Graphql API server port
+server:
+  port: 8080
+  # Time that connectors wait for another HTTP request before closing the connection. When not set, the connector's container-specific default is used. Use a value of -1 to indicate no (that is, an infinite) timeout.
+  connection-timeout: 3m
+  # Session timeout. If a duration suffix is not specified, seconds will be used.
+  servlet:
+    session:
+      timeout: 3m
+
+# Data source properties
+spring:
+      # JDBC url of the database
+  datasource:
+    #todo auto connect parameter, use ssl, connection time out and so time out
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/sso_api?autoreconnect=true&useSSL=false&connectTimeout=1000&socketTimeout=1000
+    # Login username of the database
+    username: user
+    # Login password of the database
+    password: password
+    #C3P0 configurations
+    type : com.mchange.v2.c3p0.ComboPooledDataSource
+    initialization-mode: always
+
+  # TRANSACTION (TransactionProperties)
+  transaction:
+    # Default transaction timeout. If a duration suffix is not specified, seconds will be used.
+    default-timeout: 5s
+    # Whether to roll back on commit failures.
+    rollback-on-commit-failure:
+
+  # JDBC (JdbcProperties)
+  jdbc:
+    template:
+      # Number of rows that should be fetched from the database when more rows are needed.
+      fetch-size: -1
+      # Maximum number of rows.
+      max-rows: -1
+      # Query timeout. Default is to use the JDBC driver's default configuration. If a duration suffix is not specified, seconds will be used.
+      query-timeout: 2s
+
+  # Send email properties
+  mail:
+    default-encoding: UTF-8
+    host: smtp.gmail.com
+    username: dstssoapi@gmail.com
+    password: beyondm12
+    port: 587
+    protocol: smtp
+    test-connection: false
+    properties:
+      mail:
+        smtp:
+          auth: true
+#          Socket connection timeout value in milliseconds
+          connectiontimeout: 5000
+#          Socket I/O timeout value in milliseconds.
+          timeout: 5000
+          writetimeout: 5000
+          starttls:
+            enable: true
+
+# email related configuration
+email:
+  temporary-password-subject: Temporary Password for MyDST
+  temporary-password-template-name: email-template.ftl
+  forget-password-subject: Temporary Password for MyDST
+  forget-password-template-name: email-template.ftl
+  sender-email-address: MyDST@dst.com
+
+# Jooq properties
+jooq:
+  sql-dialect: MYSQL_8_0
+
+# Authorization server details
+oauth2:
+  tokenUri: http://localhost:8080/oauth/token?grant_type=%s&username=%s&password=%s
+
+# Db connection check scheduler time in milli seconds
+systemScheduleTime: 10000
+
+# SSO API system related configurations
+system:
+  minimum-age-to-register: 18
+  maximum-allowed-characters-security-question: 255
+  maximum-allowed-characters-security-question-answer: 255
+  max-invalid-login-attempt: 3
+  email-pattern: "^[\\w-+]+(\\.[\\w]+)*@[\\w-]+(\\.[\\w]+)*(\\.[a-z]{2,})$"
+  password-pattern: "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$"
+  dob-year-pattern: ^\d{4}$
+  max-mobilenumber: 10
+  max-nicnumber: 20
+  country-code: 673
+  jwt-expire-time-hours: 24
+
+#  SMS connector configuration properties
+sms:
+#  SMS MT send request endpoint
+  smsMtEndpointUri: http://localhost:4000/sms-guardian/send/mt
+  #  Username for the sms mt request
+  username: asere
+  #  Password for the sms mt request
+  password: retrt
+  #  iName for the sms mt request
+  iName: etrytf
+  #  action for the sms mt request: Default is push
+  action: push
+  # send  address for the sms mt request
+  sourceAddress: 124125125
+  # delivery request for the sms mt request
+  requestDeliveryReport: false
+  otpSmsMessage: Please find your OTP message |
+  otpEmailSubject: DST | SSO API | OTP
+  # sms connector timeout status
+  connector:
+    soTimeOutInMillis: 2000
+    connectionRequestTimeoutInMilliSec: 2000
+    connectTimeoutInMilliSec: 2000
+    defaultMaxNoOfConnectionsPerRoute: 50
+    maxNoOfConnections: 50
+    idleConnectionCheckPeriodInMilliSec: 10000
+    maxIdleTimeInMilliSec: 600000
+
